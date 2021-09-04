@@ -1,0 +1,26 @@
+logging:
+  level: INFO
+  loggers:
+    no.navneet: DEBUG
+    org.hibernate.SQL:
+      level: DEBUG
+  appenders:
+    - type: console
+    - type: file
+      currentLogFilename: ./target/logs/visningStats.log
+      archivedLogFilenamePattern: ./target/logs/visningStats-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 10
+      timeZone: UTC
+      maxFileSize: 10MB
+database:
+  driverClass: org.postgresql.Driver
+  user: ${DB_USERNAME}
+  password: ${DB_PASSWORD}
+  url: ${DB_JDBC_URL}
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.jdbc.batch_sze: 100
+    hibernate.order_inserts: true
+    hibernate.order_updates: true
+  validationQuery: "/* PetLicenseServer Health Check */ SELECT 1"
