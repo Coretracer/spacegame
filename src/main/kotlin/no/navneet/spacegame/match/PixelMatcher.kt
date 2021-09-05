@@ -1,7 +1,7 @@
 package no.navneet.spacegame.match
 
-import no.navneet.spacegame.bin.Alien
-import no.navneet.spacegame.bin.Frame
+import no.navneet.spacegame.elements.Alien
+import no.navneet.spacegame.elements.Frame
 
 object PixelMatcher {
 

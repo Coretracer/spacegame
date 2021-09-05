@@ -1,8 +1,8 @@
 package no.navneet.spacegame.match
 
-import no.navneet.spacegame.bin.Alien
-import no.navneet.spacegame.bin.Space
-import no.navneet.spacegame.util.Coordinate
+import no.navneet.spacegame.elements.Alien
+import no.navneet.spacegame.elements.Space
+import no.navneet.spacegame.elements.Coordinate
 
 object AlienFinder {
 

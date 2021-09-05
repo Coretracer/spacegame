@@ -1,7 +1,4 @@
-package no.navneet.spacegame.bin
-
-import no.navneet.spacegame.util.Coordinate
-import no.navneet.spacegame.util.Size
+package no.navneet.spacegame.elements
 
 class Space(val pixelRows: List<String>) {
 

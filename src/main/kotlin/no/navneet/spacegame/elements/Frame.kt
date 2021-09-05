@@ -1,4 +1,4 @@
-package no.navneet.spacegame.bin
+package no.navneet.spacegame.elements
 
 class Frame(val pixelRows: List<String>) {
 
