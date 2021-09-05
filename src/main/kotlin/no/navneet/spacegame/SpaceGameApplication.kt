@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import io.dropwizard.Application
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor
 import io.dropwizard.configuration.SubstitutingSourceProvider
-import io.dropwizard.db.DataSourceFactory
-import io.dropwizard.migrations.MigrationsBundle
 import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 

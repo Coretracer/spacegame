@@ -2,7 +2,7 @@ package no.navneet.spacegame.elements
 
 class Frame(val pixelRows: List<String>) {
 
-    fun isEmpty():Boolean{
+    fun isEmpty(): Boolean {
         return pixelRows.isEmpty()
     }
 

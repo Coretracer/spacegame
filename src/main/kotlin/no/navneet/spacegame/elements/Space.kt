@@ -13,8 +13,8 @@ class Space(val pixelRows: List<String>) {
     private fun getFrame(
         coordinate: Coordinate,
         size: Size
-    ):Frame {
-        val rowsOfFrame =  pixelRows.subList(coordinate.y, coordinate.y + size.height)
+    ): Frame {
+        val rowsOfFrame = pixelRows.subList(coordinate.y, coordinate.y + size.height)
             .map { it.substring(coordinate.x, coordinate.x + size.width) }
         return Frame(rowsOfFrame)
     }
@@ -24,5 +24,5 @@ class Space(val pixelRows: List<String>) {
         coordinate: Coordinate,
         size: Size
     ) = (coordinate.y + size.height <= pixelRows.size
-                && coordinate.x + size.width <= pixelRows[coordinate.y].length)
+            && coordinate.x + size.width <= pixelRows[coordinate.y].length)
 }

@@ -13,11 +13,11 @@ import javax.ws.rs.core.Response
 @Path("/space")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-class SapceGameResource() {
+class SapceGameResource {
     @POST
     @Path("/alien")
     @Valid
-    fun checkAlienExistInSpace( @PathParam("shape") alienShape: String ): Response {
+    fun checkAlienExistInSpace(@PathParam("shape") alienShape: String): Response {
 
         return Response.ok().build()
     }
