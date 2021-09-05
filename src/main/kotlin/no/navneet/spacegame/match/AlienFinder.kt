@@ -6,30 +6,26 @@ import no.navneet.spacegame.util.Coordinate
 
 object AlienFinder {
 
-
-
     fun findAlien(space: Space, alien: Alien): List<Coordinate> {
-
-        val result = space
+        return space
             .pixelRows
             .mapIndexed { yAxis, line ->
-                findCoordinateThatMatchesAlienHeadInRow(line, yAxis, space, alien)
-            }
-        return result.flatten()
+                findCoordinateThatMatchesAlienHeadInThisYAxis(line, yAxis, space, alien)
+            }.flatten()
     }
 
-    private fun findCoordinateThatMatchesAlienHeadInRow(
+    private fun findCoordinateThatMatchesAlienHeadInThisYAxis(
         line: String,
         yAxis: Int,
         space: Space,
         alien: Alien
     ): List<Coordinate> {
-        val pixelsOfMatchingHead = alien
+        val partialMatchingCoordinates = alien
             .getHead()
             ?.let { findAlienHead(it, line) }
-
-        return pixelsOfMatchingHead
             ?.map { Coordinate(it.first, yAxis) }
+
+        return partialMatchingCoordinates
             ?.filter { findAlienInThisSpaceCoordinate(it, space, alien) }
             ?: emptyList()
     }
@@ -40,30 +36,14 @@ object AlienFinder {
         space: Space,
         alien: Alien
     ): Boolean {
-        val alienSize = alien.getSize()
-        val frame = space.extractFrame(coordinatePOI, alienSize)
-        return frame?.let {
-            matchAlienInFrame(it, alien)
-        } ?: false
-    }
+        val frame = space.extractFrame(coordinatePOI, alien.getSize())
 
-
-    fun matchAlienInFrame(frame: List<String>, alien: Alien): Boolean {
-        if (!matchesSize(frame, alien)) return false
-
-        alien.pixelRows.forEachIndexed { index, line ->
-            if (frame[index] != line) {
-                return false
-            }
+        return if (!frame.isEmpty()) {
+            PixelMatcher.matchAlienInTheFrame(frame, alien)
+        } else {
+            false
         }
-        return true
-    }
 
-    private fun matchesSize(
-        frame: List<String>,
-        alien: Alien
-    ): Boolean {
-        return frame.size == alien.pixelRows.size
     }
 
     private fun findAlienHead(
